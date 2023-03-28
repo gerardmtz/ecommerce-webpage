@@ -43,10 +43,10 @@
                 <a class="nav-link" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"> <sup>1</sup> </i></a>
+                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"> <sup>  <?php cart_item(); ?> </sup> </i></a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Monto total:100/- </a>
+                <a class="nav-link" href="#">Monto total: $100 </a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link disabled">Disabled</a>
