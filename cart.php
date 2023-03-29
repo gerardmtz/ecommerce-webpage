@@ -89,7 +89,7 @@
         <!-- fourth child-table for cart-->
         <div class = "container">
             <div class="row">
-                <form action="" method="post">
+                <form action="" method="POST">
                     <table class="table table-bordered text-center">
                         <thead>
                                 <tr>
@@ -121,7 +121,7 @@
                                         $product_price = array($row_product_price['product_price']);
                                         $price_table = $row_product_price['product_price'];
                                         $product_title= $row_product_price['product_title'];
-                                        // $product_id = $row_product_price['product_id'];
+                                        $product_id = $row_product_price['product_id'];
                                         $product_image1=$row_product_price['product_image1'];
                                         $product_values= array_sum($product_price);
                                         $total_price += $product_values;
@@ -131,7 +131,7 @@
                             <tr>
                                 <td> <?php echo $product_title ?> </td>
                                 <td> <img src="./img/<?php echo $product_image1?>" alt="" class="cart_img"> </td>
-                                <td> <input type="text" name="qty" class="form-input w-50"> </td>
+                                <td> <input type="text" name="qty" class="form-input w-50" id= <?php echo $product_id['product_id']; ?>> </td>
                                 <td> $<?php echo $price_table ?> </td>
                                 <td> <input type="checkbox" name="" id="">  </td>
                                 <td>
@@ -141,12 +141,20 @@
                                 </td>
                                 <!-- php code for updating the quantity in the databse-->
                                 <?php
+
+                                    ini_set('display_errors', 1);
+                                    ini_set('display_startup_errors', 1);
+                                    error_reporting(E_ALL);
+
+                                    /*global*/ $con;
                                     $get_ip_add = getIPAddress();
                                     if( isset( $_POST['update_cart'] ) ){
-                                        if( isset($_POST['qty']) ){
+                                        if( isset( $_POST['qty'] ) ){
                                             $quantities=$_POST['qty'];
-                                            $update_cart="UPDATE `cart_details` SET quantity=$quantities WHERE ip_address='$get_ip_add' /*AND product_id=$product_id*/;";
-                                            $result_products_quantitiy=mysqli_query($con,$update_cart);
+                                            echo var_dump($quantities);
+
+                                            $update_cart="UPDATE `cart_details` SET quantity=$quantities WHERE ip_address='$get_ip_add' AND product_id=$product_id;";
+                                            $result_products_quantity=mysqli_query($con,$update_cart);
                                             $total_price=$total_price*$quantities;
                                         }
                                         else{ echo "error al cargar las cantidades"; }
