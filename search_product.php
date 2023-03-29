@@ -15,7 +15,8 @@
     <!--font Awesome Link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
-  <link rel="stylesheet" href="sytle.css">
+  <!-- css files -->
+  <link rel="stylesheet" href="./css/style.css">
 
   <body>
   <!--nav bar-->
@@ -42,10 +43,10 @@
                 <a class="nav-link" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"> <sup>1</sup> </i></a>
+                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"> <sup> <?php cart_item(); ?> </sup> </i></a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Monto total:100/- </a>
+                <a class="nav-link" href="#">Monto total: $<?php total_cart_price(); ?> </a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link disabled">Disabled</a>

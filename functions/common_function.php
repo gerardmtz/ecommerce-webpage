@@ -35,6 +35,7 @@ function getProducts(){
                             <div class='card-body'>
                                 <h5 class='card-title'>$product_title</h5>
                                 <p class='card-text'>$product_description</p>
+                                <p class='card-text'> Precio: $$product_price</p>
                                 <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Añadir al carrito</a>
                                 <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>
                             </div>
@@ -75,6 +76,7 @@ function get_all_products(){
                             <div class='card-body'>
                                 <h5 class='card-title'>$product_title</h5>
                                 <p class='card-text'>$product_description</p>
+                                <p class='card-text'> Precio: $$product_price</p>
                                 <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Añadir al carrito</a>
                                 <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>                                
                             </div>
@@ -121,6 +123,7 @@ function get_unique_categories(){
                         <div class='card-body'>
                             <h5 class='card-title'>$product_title</h5>
                             <p class='card-text'>$product_description</p>
+                            <p class='card-text'> Precio: $$product_price</p>
                             <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Añadir al carrito</a>
                             <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>                        </div>
                     </div>
@@ -165,6 +168,7 @@ function get_unique_brands(){
                         <div class='card-body'>
                             <h5 class='card-title'>$product_title</h5>
                             <p class='card-text'>$product_description</p>
+                            <p class='card-text'> Precio: $$product_price</p>
                             <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Añadir al carrito</a>
                             <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>                        
                         </div>
@@ -250,6 +254,7 @@ function search_product(){
                         <div class='card-body'>
                             <h5 class='card-title'>$product_title</h5>
                             <p class='card-text'>$product_description</p>
+                            <p class='card-text'> Precio: $$product_price</p>
                             <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Añadir al carrito</a>
                             <a href='product_details.php?product_id=$product_id' class='btn btn-secondary'>Ver más</a>                        
                         </div>
@@ -293,6 +298,7 @@ function view_details(){
                                 <div class='card-body'>
                                     <h5 class='card-title'>$product_title</h5>
                                     <p class='card-text'>$product_description</p>
+                                    <p class='card-text'> Precio: $$product_price</p>
                                     <a href='index.php?add_to_cart=$product_id' class='btn btn-primary'>Añadir al carrito</a>
                                     <a href='index.php' class='btn btn-secondary'>Página Principal</a>
                                 </div>
@@ -368,5 +374,92 @@ function cart(){
         }
     } 
 }
+
+// function to get the cart items numbers in cart icon
+function cart_item(){
+
+    if( isset( $_GET['add_to_cart'] ) ){
+        global $con;
+        $get_ip_add = getIPAddress();
+        $select_query="SELECT * FROM `cart_details` WHERE ip_address='$get_ip_add';";
+        $result_query=mysqli_query($con, $select_query);
+        $count_cart_items=mysqli_num_rows($result_query);
+    }else{
+        global $con;
+        $get_ip_add = getIPAddress();
+        $select_query="SELECT * FROM `cart_details` WHERE ip_address='$get_ip_add';";
+        $result_query=mysqli_query($con, $select_query);
+        $count_cart_items=mysqli_num_rows($result_query);
+    }
+    echo $count_cart_items;
+}
+
+// total price function
+function total_cart_price(){
+    global $con;
+    $get_ip_add = getIPAddress();
+    $total_price = 0;
+    $cart_query="SELECT * FROM `cart_details` WHERE ip_address='$get_ip_add';";
+    $result=mysqli_query($con, $cart_query);
+
+    while( $row=mysqli_fetch_array($result) ){
+
+        $product_id=$row['product_id'];
+        $select_products="SELECT * FROM `products` WHERE product_id='$product_id';";
+        $result_products=mysqli_query($con, $select_products);
+
+        while( $row_product_price=mysqli_fetch_array($result_products) ){
+
+            $product_price = array($row_product_price['product_price']);
+            $product_values= array_sum($product_price);
+            $total_price += $product_values;
+        }
+    }
+    echo $total_price;
+}
+
+// display cart items in view cart page function
+/*
+function display_cart_items(){
+    global $con;
+    $get_ip_add = getIPAddress();
+    $total_price = 0;
+    $cart_query="SELECT * FROM `cart_details` WHERE ip_address='$get_ip_add';";
+    $result=mysqli_query($con, $cart_query);
+
+    while( $row=mysqli_fetch_array($result) ){
+
+        $product_id=$row['product_id'];
+        $select_products="SELECT * FROM `products` WHERE product_id='$product_id';";
+        $result_products=mysqli_query($con, $select_products);
+
+        while( $row_product_price=mysqli_fetch_array($result_products) ){
+
+            $product_price = array($row_product_price['product_price']);
+            $price_table = $row_product_price['product_price'];
+            $product_title= $row_product_price['product_title'];
+            $product_image1=$row_product_price['product_image1'];
+            $product_values= array_sum($product_price);
+            $total_price += $product_values;
+
+            echo " 
+
+                        <tr>
+                            <td> <?php echo $product_title ?> </td>
+                            <td> <img src='./img/<?php echo $product_image1?>' alt='' class='cart_img'> </td>
+                            <td> <input type='text' name='' id='' class='form-input w-50'> </td>
+                            <td> $<?php echo $price_table ?> </td>
+                            <td> <input type='checkbox' name='' id=''>  </td>
+                            <td>
+                                <button class='bg-danger border-0 mx-2'>Actualizar</button>
+                                <button class='bg-danger border-0 mx-1'>Eliminar</button>
+                            </td>
+                        </tr>
+            ";
+        }
+    }
+}
+*/
+
 ?>
 
