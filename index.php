@@ -43,9 +43,7 @@
                 <a class="nav-link" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
-                    <!-- 29/03/2023 Se agrego la página cart.php y la funcion cart_item()-->
-                <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i>
-                <sup><?php cart_item();?></sup> </a>
+                <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"> <sup>1</sup> </i></a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Monto total:100/- </a>
