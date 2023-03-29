@@ -1,3 +1,5 @@
+<!-- 29/03/2023 Terminación del video 29 -->
+
 <!-- conneting files -->
 <?php
     include('includes/connect.php');
@@ -9,11 +11,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 29/03/2023 Se cambio el titulo-->
+    <title>Taylor - Detalles del carrito</title>
+
     <title>Detalles del carrito</title>
+    
     <!--bootstrapt CSS link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!--font Awesome Link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!--css files -->
     <link rel="stylesheet" href="./css/style.css">
     <!-- <style> 
@@ -52,6 +59,12 @@
                 <a class="nav-link" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
+
+                    <!-- 29/03/2023 Se agrego la página cart.php y la funcion cart_item()-->
+                <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"></i>
+                <sup><?php cart_item();?></sup> </a>
+                </li>
+                    <!-- 29/03/2023 Se Elimino un nav-item de Monto Total.-->
                 <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"> <sup>  <?php cart_item(); ?> </sup> </i></a>
                 </li>
                 <li class="nav-item">
@@ -61,6 +74,9 @@
                 <a class="nav-link disabled">Disabled</a>
                 </li>
             </ul>
+
+                    <!-- 29/03/2023 Se elimino el From de Search Bar-->
+                    
             </div>
         </div>
         </nav>
@@ -86,6 +102,49 @@
             <p class="text-center">De músicos para músicos en todo México</p>
         </div>
 
+
+       <!-- 29/03/2023  Se borro el Fourth child y se crea Fourth child-table -->
+
+       <!-- Fourth child-table -->
+        <div class="container">
+            <div class="row">
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th>Titulo del Producto</th>
+                            <th>Imagen del Producto</th>
+                            <th>Calidad</th>
+                            <th>Precio Total</th>
+                            <th>Borrar</th>
+                            <th>Operaciones</th>
+                        </tr>
+                        <tbody>
+                            <tr>
+                                <!-- Frase de referencia en lo que agregamos la imagen indicada -->
+                                <td>Apple</td>
+                                <td><img src="./images/apple.jpg" alt=""></td>
+                                <td><input type="text"></td>
+                                <td>9000</td>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <p>Actualizar</p>
+                                    <p>Borrar</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </thead>
+                </table><!-- Fin de table -->
+               
+                <!-- Subtotal -->
+                <div class = "d-flex mb-5">
+                    <h4 class="px-3">Subtotal:<strong class="text-info">5000/-</strong></h4>
+                    
+                     <a href="index.php"><botton class = "bg-info px-3 py-2 border-0 mx-3">Continuar Comprando</botton></a>
+                     <!-- Falta agregar la página de donde se va a direccionar-->
+                     <a href="#"><botton class = "bg-secondary p-3 py-2 border-0 text-light">Checkout</botton></a>
+                </div>
+            </div>
+        </div>
         <!-- fourth child-table for cart-->
         <div class = "container">
             <div class="row">
