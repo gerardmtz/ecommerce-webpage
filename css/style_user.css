@@ -1,0 +1,10 @@
+.my-label {
+    display: flex;
+    justify-content: center; /* align horizontally */
+    align-items: center; /* align vertically */
+    width: 50%;
+    margin: auto;
+    margin-bottom: 4;
+  }
+
+  
