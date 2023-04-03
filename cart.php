@@ -190,12 +190,12 @@
                                 echo "
                                 
                                 <h4 class='px-3'>Subtotal: <strong class='text-danger'> $$total_price </strong> </h4>
-                                <input type='submit' value='Seguir comprando' class='bg-danger border-0 mx-2' name='continue_shopping'>
-                                <button class='bg-secondary px-3 py-2 border-0 mx-2'> <a href='checkout.php' class='text-light text-decoration-none'> Checkout </a> </button>
+                                <input type='submit' value=' Seguir comprando ' class='bg-danger border-0 mx-2' name='continue_shopping'>
+                                <button class='bg-secondary px-3 py-2 border-0 mx-2'> <a href='checkout.php' class='text-light text-decoration-none'> Verficiar </a> </button>
                         
                                 ";
                             }else{
-                                echo " <input type='submit' value='Seguir comprando' class='bg-danger border-0 mx-2' name='continue_shopping'> ";
+                                echo " <input type='submit' value=' Seguir comprando ' class='bg-danger border-0 mx-2' name='continue_shopping'> ";
                             }
                             if( isset($_POST['continue_shopping']) ){
 
