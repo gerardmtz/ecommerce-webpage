@@ -60,7 +60,7 @@
                     </div>
                     <div class="mt-4 pt-2">
                         <input type="submit" value="Registrar" class="bg-danger py-2 px-3 border-0" name="user_register">
-                        <p class="small fw-bold mt-2 pt-1 mb-0">¿Ya tiene una cuenta? <a href="user_login.php" class="text-danger"> Ingrese </a></p>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">¿Ya tiene una cuenta? Inicie sesión <a href="user_login.php" class="text-danger"> Aquí </a></p>
                     </div>
 
                 </form>
