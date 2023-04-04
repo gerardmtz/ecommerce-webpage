@@ -6,7 +6,6 @@ include('.../functions/common_function.php');
 
 //Función de mostrar el usuario por medio del ID
 
-
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
 }
@@ -57,7 +56,7 @@ if ($quantity == 0) {
 
 $insert_orders = "Insert into 'user_orders' (user_id,amount_due, invoice_number,
                 total_products, order_date, order_status)
-                values($user_id, $subtotal, $invoice_numbe, $count_products, NOW(),'$status')";
+                values($user_id, $subtotal, $invoice_number, $count_products, NOW(),'$status')";
 
             $result_query = mysqli_query($con, $insert_orders);
 

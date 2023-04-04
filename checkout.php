@@ -1,7 +1,6 @@
 <!-- conneting files -->
 <?php
     include('includes/connect.php');
-    include('functions/common_function.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +8,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Taylor</title>
+    <title>Checkout</title>
     <!--bootstrapt CSS link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!--font Awesome Link-->
@@ -43,15 +42,6 @@
                 <li class="nav-item">
                 <a class="nav-link" href="#">Contacto</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"> <sup>  <?php cart_item(); ?> </sup> </i></a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Monto total: $<?php total_cart_price(); ?> </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-                </li>
             </ul>
 
             <!-- search bar -->
@@ -65,9 +55,6 @@
         </div>
         </nav>
 
-        <!-- Calling the cart function -->
-        <?php cart(); ?>
-        
         <!--second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
@@ -88,51 +75,24 @@
 
         <!--fourth child -->
         <div class="row px-3">
-            <div class="col-md-10">
+            
+            <div class="col-md-12">
                 <!--productos-->
                 <div class="row">
-                    <!-- <div class="col-md-4 mb-2"> -->
-                        <!-- fetching the products -->
-                        <?php 
-                            getProducts();
-                            get_unique_categories();
-                            get_unique_brands();
-                            // $ip = getIPAddress();  
-                            // echo 'User Real IP Address - '.$ip;
-                        ?>
-                    <!-- </div> -->
+                    
+                    <?php
+
+                        if( !isset( $_SESSION['username'] ) ){
+                            include('users_area/user_login.php');
+                        }else{
+                            include('payment.php');
+                        }
+                    
+                    ?>
+                    
+
                 </div>
             </div> <!-- column end -->
-
-                <div class="col-md-2 bg-secondary p-0">
-                <!--side nav-->
-                <!-- marcas de guitarras que serán desplegadas-->
-                <ul class="navbar-nav me-auto text-center">
-                    <li class="nav-item bg-danger ">
-                        <a href="#" class="nav-link text-light"> <h4> Marcas Asociadas </h4> </a>
-                    </li>
-
-                    <!-- fetching the brands into the side bar from the index -->
-                    <?php
-                        getBrands();
-                    ?>
-                </ul>
-
-                <!--Categorías desplegadas -->
-
-                <ul class="navbar-nav me-auto text-center">
-
-                    <li class="nav-item bg-danger ">
-                        <a href="#" class="nav-link text-light"> <h4> Cetegorías </h4> </a>
-                    </li>
-
-                    <!-- fetching the categories into the side bar from the index -->
-
-                    <?php
-                        getCategories();
-                    ?>
-                </ul>
-            </div>
 
         </div> <!-- row end -->
 
