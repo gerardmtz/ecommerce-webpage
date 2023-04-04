@@ -1,4 +1,6 @@
 <!-- 03/04/2023 Video 53 -->
+<!-- 04/04/2023 Video 54 -->
+
 
 
 <!-- conneting files -->
@@ -14,7 +16,7 @@ include('../functions/common_function.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Taylor Usuario <?php echo $_SESSION['username']?></title>
+    <title>Taylor Usuario <?php echo $_SESSION['username'] ?></title>
     <!--bootstrapt CSS link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!--font Awesome Link-->
@@ -145,32 +147,47 @@ include('../functions/common_function.php');
                             <h4>Tu Perfil</h4>
                         </a>
                     </li>
+                    <!-- 04/04/2023 Se agrego un username del video 54 -->
+                    <?php
+                    $username = $_SESSION['username'];
+                    $user_image = "Select * from 'user_table' where username = '$username'";
+                    $user_image = mysqli_query($con, $user_image);
+                    $row_image = mysqli_fetch_array($user_image);
+                    $user_image = $row_image ['user_image'];
+                                //Falta corregir la imagen que utilizaremos
+                    echo "<li class = 'nav-item'>
+                    <img src = './user_images/$user_image' class = 'profile_img my-4' alt = ''>
+                    </li>";
+                    ?>
+
+
                     <li class="nav-item">
                         <!-- Falta un imagen a poner como usuario -->
                         <img src="#" class="profile_img my-4" alt="">
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php">
                             Ordenes Pendientes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php?edit_account">
                             Editar Cuenta
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php?my_orders">
                             Mis Pedidos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php?delete_account">
                             Borrar Cuenta
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="logout.php">
                             Desconectar
                         </a>
                     </li>
