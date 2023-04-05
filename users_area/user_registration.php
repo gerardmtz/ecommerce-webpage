@@ -96,11 +96,13 @@
         $user_ip=getIPAddress();
 
         // insert_query
+        
+        // move_uploaded_file($user_image_tmp, "./users_images/$user_image"); --> No funcionó
 
-        // Este método no funcionó, por lo que se optó por una alternativa
-        //move_uploaded_file($user_image_tmp, "../user_images/$user_image");
+        // Esta alternativa sí funcionó
+        move_uploaded_file($user_image_tmp, "users_images/$user_image");
 
-        move_uploaded_file($user_image_tmp, "./users_area/users_images/$user_image");
+
         $insert_query="INSERT INTO `user_table` 
                        (username, user_email, user_password, user_image, user_ip, user_address, user_mobile)
                        VALUES ('$user_username', '$user_email', '$user_password', '$user_image', '$user_ip', '$user_address', '$user_contact');";
@@ -113,5 +115,5 @@
             die( mysqli_error($con) );
         }
     }
-    
+
 ?>
