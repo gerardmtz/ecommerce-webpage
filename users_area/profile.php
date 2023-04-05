@@ -26,17 +26,30 @@ include('../functions/common_function.php');
 <link rel="stylesheet" href="../style.css">
 
 <!-- Se agregaron Estilos -->
+    <!-- 05/04/2023 Se agrego el estilo .edit_image -->
 <style>
     .body {
+
         overflow-x: hidden;
+
     }
 
     .profile_img {
+
         width: 90%;
         margin: auto;
         display: block;
         height: 100%;
         object-fit: contain;
+
+    }
+    
+    .edit_image{
+
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+
     }
 </style>
 
@@ -153,8 +166,8 @@ include('../functions/common_function.php');
                     $user_image = "Select * from 'user_table' where username = '$username'";
                     $user_image = mysqli_query($con, $user_image);
                     $row_image = mysqli_fetch_array($user_image);
-                    $user_image = $row_image ['user_image'];
-                                //Falta corregir la imagen que utilizaremos
+                    $user_image = $row_image['user_image'];
+                    //Falta corregir la imagen que utilizaremos
                     echo "<li class = 'nav-item'>
                     <img src = './user_images/$user_image' class = 'profile_img my-4' alt = ''>
                     </li>";
@@ -193,9 +206,17 @@ include('../functions/common_function.php');
                     </li>
                 </ul>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10 text-center">
+                <!-- 05/04/2023 Video 56 Se agrego una función para editar perfil  -->
+                <?php get_user_order_details();
 
+                if( isset ( $_GET[ 'edit_account' ] ) ) {
 
+                    include( 'edit_account.php' );
+
+                }
+                
+                ?>
             </div>
         </div>
 
