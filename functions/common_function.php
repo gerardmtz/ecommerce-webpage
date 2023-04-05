@@ -5,7 +5,7 @@
     error_reporting(E_ALL);
 
 // including connection file
-include ('./includes/connect.php');
+// include ('./includes/connect.php');
 
 // function for getting products
 function getProducts(){
