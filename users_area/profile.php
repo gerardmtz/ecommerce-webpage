@@ -216,6 +216,12 @@ include('../functions/common_function.php');
 
                 }
                 
+                if( isset ( $_GET[ 'my_orders' ] ) ) {
+
+                    include( 'user_orders.php' );
+
+                }
+
                 ?>
             </div>
         </div>
