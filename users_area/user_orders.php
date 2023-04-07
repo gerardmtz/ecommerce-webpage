@@ -59,7 +59,7 @@
                     $order_status = 'Complete';
                 }
                 $order_status = $row_orders['order_date'];
-                
+
 
                 echo "<tr>
 
@@ -68,11 +68,17 @@
                 <td>$total_products</td>
                 <td>$invoice_number</td>
                 <td>$order_date</td>
-                <td>$order_status</td>
-                <td><a href='confirm_payment.php?order_id=$order_id' class='text-light'>Confirm</a></td>
+                <td>$order_status</td>";
+            ?>
+            <?php
+                if ($order_status == 'Complete') {
+                    echo "<td>Paid</td>";
+                } else {
+                    echo "<td><a href='confirm_payment.php?order_id=$order_id' class='text-light'>Confirm</a></td>
+                </tr>";
+                }
 
-            </tr>";
-            $number++;
+                $number++;
             }
             ?>
         </tbody>

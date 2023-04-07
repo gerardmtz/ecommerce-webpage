@@ -4,8 +4,8 @@
 
 
 <!-- conneting files -->
-<!-- Se agregaron nuevas diagonales para el acceso de carpetas -->
-<?php
+<!--Se agregaron nuevas diagonales para el acceso de carpetas -->
+<?php 
 include('../includes/connect.php');
 include('../functions/common_function.php');
 ?>
@@ -219,6 +219,12 @@ include('../functions/common_function.php');
                 if( isset ( $_GET[ 'my_orders' ] ) ) {
 
                     include( 'user_orders.php' );
+
+                }
+                
+                if( isset ( $_GET[ 'delete_account' ] ) ) {
+
+                    include( 'delete_account.php' );
 
                 }
 
