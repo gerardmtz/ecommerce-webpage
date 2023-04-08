@@ -72,19 +72,25 @@
         <!--second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Bienvenido: Invitado</a>
-                </li>
-                <?php
-                    if( !isset($_SESSION['username']) ){
-                        echo "
-                            <li class = 'nav-item'> <a class='nav-link' href='./user_login.php'>Iniciar sesión</a> </li>
-                        ";
-                    }else{
-                        echo "
-                            <li class = 'nav-item'> <a class='nav-link' href='./logout.php'>Cerrar sesión</a> </li>
-                        ";
-                    }
+            <?php
+                if( !isset($_SESSION['username']) ){
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='#'>Bienvenido: Invitado</a> </li>
+                    ";
+                }else{
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='#'>Bienvenido ".$_SESSION['username']." </a> </li>
+                    ";
+                }
+                if( !isset($_SESSION['username']) ){
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='./users_area/user_login.php'>Iniciar sesión</a> </li>
+                    ";
+                }else{
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='./users_area/logout.php'>Cerrar sesión</a> </li>
+                    ";
+                }
                 ?>
             </ul>
         </nav>
