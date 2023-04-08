@@ -2,6 +2,7 @@
 <?php
     include('includes/connect.php');
     include('functions/common_function.php');
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -71,9 +72,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Bienvenido: Invitado</a>
                 </li>
-                <li class = "nav-item">
-                    <a class="nav-link" href="./users_area/user_login.php">Login</a>
-                </li>
+                <?php
+                    if( !isset($_SESSION['username']) ){
+                        echo "
+                            <li class = 'nav-item'> <a class='nav-link' href='./user_login.php'>Iniciar sesión</a> </li>
+                        ";
+                    }else{
+                        echo "
+                            <li class = 'nav-item'> <a class='nav-link' href='./logout.php'>Cerrar sesión</a> </li>
+                        ";
+                    }
+                ?>
             </ul>
         </nav>
 
