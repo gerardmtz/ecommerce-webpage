@@ -1,9 +1,9 @@
 <?php
     include('../includes/connect.php');
     include('../functions/common_function.php');
-    session_start();
+    @session_start();
+    // session_start();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +53,7 @@
                     </div>
                     <div class="mt-4 pt-2">
                         <input type="submit" value="Ingresar" class="bg-danger py-2 px-3 border-0" name="user_login">
-                        <p class="small fw-bold mt-2 pt-1 mb-0">¿No tiene una cuenta? Haga una <a href="user_registration.php" class="text-danger"> Aquí </a></p>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">¿No tiene una cuenta? Haga una <a href="./user_registration.php" class="text-danger"> Aquí </a></p>
                     </div>
 
                 </form>

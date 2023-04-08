@@ -38,7 +38,7 @@
                 <a class="nav-link" href="../display_all.php">Productos</a> 
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="user_registrarion.php">Registro</a>
+                <a class="nav-link" href="./user_registration.php">Registro</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Contacto</a>
@@ -98,9 +98,9 @@
                     <?php
 
                         if( !isset( $_SESSION['username'] ) ){
-                            include('user_login.php');
+                            include('./user_login.php');
                         }else{
-                            include('payment.php');
+                            include('./payment.php');
                         }
                     
                     ?>
