@@ -2,13 +2,20 @@
 
 <!-- conneting files -->
 <?php
+
 include('includes/connect.php');
 include('functions/common_function.php');
 session_start();
+
+    include('includes/connect.php');
+    include('functions/common_function.php');
+    session_start();
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="utf-8">
@@ -22,12 +29,32 @@ session_start();
 <!-- css files -->
 <link rel="stylesheet" href="./css/style.css">
 
+   <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Taylor</title>
+        <!--bootstrapt CSS link-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <!--font Awesome Link-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!--
+            <style>
+                body{ overflow-x:hidden; }
+            </style>
+        -->
+   </head>
+  <!-- css files -->
+  <link rel="stylesheet" href="./css/style.css">
+
+
 <body>
     <!--nav bar-->
     <div class="container-fluid p-0">
 
         <!--first child-->
         <nav class="navbar navbar-expand-lg bg-danger">
+
             <div class="container-fluid">
                 <img src="./img/logo.png" alt="" class="logo">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +80,43 @@ session_start();
                         </li>";
                         }
                         ?>
+
+        <div class="container-fluid">
+            <img src="./img/logo.png" alt="" class = "logo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.php">Página Principal</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="display_all.php">Productos</a> 
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="./users_area/user_registration.php">Registro</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"> <sup>  <?php cart_item(); ?> </sup> </i></a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="#">Monto total: $<?php total_cart_price(); ?> </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+                </li>
+            </ul>
+
+            <!-- search bar -->
+            <form class="d-flex" role="search" action="search_product.php" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_data">
+                <!-- <button class="btn btn-outline-light" type="submit">Buscar</button> -->
+                <input type="submit" value="Search" class="btn-outline-light" name="search_data_product">
+
 
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
@@ -85,12 +149,35 @@ session_start();
         <!--second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Bienvenido: Invitado</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Login</a>
                 </li>
+
+                <?php
+                    if( !isset($_SESSION['username']) ){
+                        echo "
+                            <li class = 'nav-item'> <a class='nav-link' href='#'>Bienvenido: Invitado</a> </li>
+                        ";
+                    }else{
+                        echo "
+                            <li class = 'nav-item'> <a class='nav-link' href='#'>Bienvenido ".$_SESSION['username']." </a> </li>
+                        ";
+                    }
+                    if( !isset($_SESSION['username']) ){
+                        echo "
+                            <li class = 'nav-item'> <a class='nav-link' href='./users_area/user_login.php'>Iniciar sesión</a> </li>
+                        ";
+                    }else{
+                        echo "
+                            <li class = 'nav-item'> <a class='nav-link' href='./users_area/logout.php'>Cerrar sesión</a> </li>
+                        ";
+                    }
+                ?>
+
             </ul>
         </nav>
 

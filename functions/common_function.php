@@ -8,7 +8,7 @@
     error_reporting(E_ALL);
 
 // including connection file
-include ('./includes/connect.php');
+// include ('./includes/connect.php');
 
 // function for getting products
 function getProducts(){
@@ -464,6 +464,7 @@ function display_cart_items(){
 }
 */
 
+
 // Trabajo del video 55
 // tener los detalles de orden de los usuarios
 
@@ -498,6 +499,14 @@ function get_user_order_details(){
             }
         }
     }
+
+
+// función para terminar la sesión del usuario
+function terminarSesion(){
+    // session_start();
+    session_unset();
+    session_destroy();
+
 }
 
 ?>
