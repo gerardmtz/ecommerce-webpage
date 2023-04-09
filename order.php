@@ -5,7 +5,6 @@
 include('.../functions/common_function.php');
 
 //Función de mostrar el usuario por medio del ID
-
 if (isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
 }

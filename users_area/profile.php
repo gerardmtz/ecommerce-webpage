@@ -1,9 +1,11 @@
 <!-- 03/04/2023 Video 53 -->
+<!-- 04/04/2023 Video 54 -->
+
 
 
 <!-- conneting files -->
-<!-- Se agregaron nuevas diagonales para el acceso de carpetas -->
-<?php
+<!--Se agregaron nuevas diagonales para el acceso de carpetas -->
+<?php 
 include('../includes/connect.php');
 include('../functions/common_function.php');
 ?>
@@ -14,7 +16,7 @@ include('../functions/common_function.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Taylor Usuario <?php echo $_SESSION['username']?></title>
+    <title>Taylor Usuario <?php echo $_SESSION['username'] ?></title>
     <!--bootstrapt CSS link-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <!--font Awesome Link-->
@@ -24,17 +26,30 @@ include('../functions/common_function.php');
 <link rel="stylesheet" href="../style.css">
 
 <!-- Se agregaron Estilos -->
+    <!-- 05/04/2023 Se agrego el estilo .edit_image -->
 <style>
     .body {
+
         overflow-x: hidden;
+
     }
 
     .profile_img {
+
         width: 90%;
         margin: auto;
         display: block;
         height: 100%;
         object-fit: contain;
+
+    }
+    
+    .edit_image{
+
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+
     }
 </style>
 
@@ -145,40 +160,75 @@ include('../functions/common_function.php');
                             <h4>Tu Perfil</h4>
                         </a>
                     </li>
+                    <!-- 04/04/2023 Se agrego un username del video 54 -->
+                    <?php
+                    $username = $_SESSION['username'];
+                    $user_image = "Select * from 'user_table' where username = '$username'";
+                    $user_image = mysqli_query($con, $user_image);
+                    $row_image = mysqli_fetch_array($user_image);
+                    $user_image = $row_image['user_image'];
+                    //Falta corregir la imagen que utilizaremos
+                    echo "<li class = 'nav-item'>
+                    <img src = './user_images/$user_image' class = 'profile_img my-4' alt = ''>
+                    </li>";
+                    ?>
+
+
                     <li class="nav-item">
                         <!-- Falta un imagen a poner como usuario -->
                         <img src="#" class="profile_img my-4" alt="">
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php">
                             Ordenes Pendientes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php?edit_account">
                             Editar Cuenta
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php?my_orders">
                             Mis Pedidos
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="profile.php?delete_account">
                             Borrar Cuenta
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">
+                        <a class="nav-link text-light" href="logout.php">
                             Desconectar
                         </a>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-10 text-center">
+                <!-- 05/04/2023 Video 56 Se agrego una función para editar perfil  -->
+                <?php get_user_order_details();
 
+                if( isset ( $_GET[ 'edit_account' ] ) ) {
 
+                    include( 'edit_account.php' );
+
+                }
+                
+                if( isset ( $_GET[ 'my_orders' ] ) ) {
+
+                    include( 'user_orders.php' );
+
+                }
+                
+                if( isset ( $_GET[ 'delete_account' ] ) ) {
+
+                    include( 'delete_account.php' );
+
+                }
+
+                ?>
             </div>
         </div>
 
