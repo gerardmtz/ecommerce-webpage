@@ -79,9 +79,11 @@
 </html>
 
 <!-- PHP code for  -->
+
 <?php
-    ini_set('display_errors', 1); 
-    ini_set('display_startup_errors', 1); 
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 
     if( isset($_POST['user_register']) ){
@@ -112,24 +114,42 @@
             move_uploaded_file($user_image_tmp, "users_images/$user_image");
             $insert_query="INSERT INTO `user_table` 
                        (username, user_email, user_password, user_image, user_ip, user_address, user_mobile)
-                       VALUES ('$user_username', '$user_email', '$$hash_password', '$user_image', '$user_ip', '$user_address', '$user_contact');";
+                       VALUES ('$user_username', '$user_email', '$hash_password', '$user_image', '$user_ip', '$user_address', '$user_contact');";
 
             $sql_execute=mysqli_query($con, $insert_query);
         }
     }
 
-    // selecting the cart items
-    $select_cart_items = "SELECT * FROM `cart_details` WHERE ip_address = '$user_ip';";
+    // login logic. Redirecting the user to the checkout page
+    // if the user has items in the cart, else sending the user
+    // to the index.php page
+
+    $user_ip_cart = getIPAddress(); // Getting the ip from the user
+    $select_cart_items = "SELECT * FROM `cart_details` WHERE ip_address = '$user_ip_cart';";
     $result_cart=mysqli_query($con,$select_cart_items);
     $rows_count=mysqli_num_rows($result_cart);
+
+    // echo "$rows_count";
     
-    if($rows_count>0){
-        $_SESSION['username'] = $user_username;
-        echo "<script> alert('Tiene artículos en su carrito') </script>";
-        echo "<script> window.open('checkout.php', '_self') </script>";
-    }else{
-        echo "<script> window.open('../index.php', '_self') </script>";
+    if( isset($_SESSION['username']) ){
+        if($rows_count>0){
+            $_SESSION['username'] = $user_username;
+            echo "<script> alert('Tiene artículos en su carrito') </script>";
+            echo "<script> window.open('checkout.php', '_self') </script>";
+        }else{
+            echo "<script> alert('El carrito está vacío') </script>";
+            echo "<script> window.open('../index.php', '_self') </script>";
+        }
     }
 
-
+    
+    // if($rows_count>0){
+    //     $_SESSION['username'] = $user_username;
+    //     echo "<script> alert('Tiene artículos en su carrito') </script>";
+    //     echo "<script> window.open('checkout.php', '_self') </script>";
+    // }else{
+    //     echo "<script> alert('El carrito está vacío') </script>";
+    //     echo "<script> window.open('../index.php', '_self') </script>";
+    // }
+    
 ?>
