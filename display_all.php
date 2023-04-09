@@ -45,7 +45,7 @@
                 <a class="nav-link" href="#">Contacto</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"> <sup>1</sup> </i></a>
+                <a class="nav-link" href="cart.php"><i class="fa-solid fa-cart-shopping"> <sup>  <?php cart_item(); ?> </sup> </i></a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Monto total: $<?php total_cart_price(); ?> </a>
