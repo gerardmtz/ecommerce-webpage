@@ -55,55 +55,58 @@
                         <input type="submit" value="Ingresar" class="bg-danger py-2 px-3 border-0" name="user_login">
                         <p class="small fw-bold mt-2 pt-1 mb-0">¿No tiene una cuenta? Haga una <a href="./user_registration.php" class="text-danger"> Aquí </a></p>
                     </div>
-
                 </form>
-
             </div> 
         </div>
-
     </div>
-
 </body>
 </html>
 
 <!-- Logic for the login page -->
 <?php
 
-if( isset($_POST['user_login']) ){
-    $user_username=$_POST['user_username'];
-    $user_password=$_POST['user_password'];
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 
-    $select_query = "SELECT * FROM `user_table` WHERE username = '$user_username';";
-    $result = mysqli_query($con, $select_query);
-    $row_count = mysqli_num_rows($result);
-    $row_data = mysqli_fetch_assoc($result);
-    $user_ip = getIPAddress();
+    if( isset($_POST['user_login']) ){
+        $user_username=$_POST['user_username'];
+        $user_password=$_POST['user_password'];
 
-    // consultando los artículos del carrito en la sesión
-    $select_query_cart = "SELECT * FROM `cart_details` WHERE ip_address = '$user_ip';";
-    $select_cart = mysqli_query($con, $select_query_cart);
-    $row_count_cart = mysqli_num_rows($select_cart);
-    
-    if($row_count>0){
-        $_SESSION['username'] = $user_username;
-        if( password_verify($user_password, $row_data['user_password']) ){
+        $select_query = "SELECT * FROM `user_table` WHERE username = '$user_username';";
+        $result = mysqli_query($con, $select_query);
+        $row_count = mysqli_num_rows($result);
+        $row_data = mysqli_fetch_assoc($result);
+        $user_ip = getIPAddress();
 
-            if($row_count==1 and $row_count_cart==0){
-                $_SESSION['username'] = $user_username;
-                echo "<script> alert('Sesión iniciada') </script>";
-                echo "<script> window.open('profile.php','_self') </script>";
+        // consultando los artículos del carrito en la sesión
+        $select_query_cart = "SELECT * FROM `cart_details` WHERE ip_address = '$user_ip';";
+        $select_cart = mysqli_query($con, $select_query_cart);
+        $row_count_cart = mysqli_num_rows($select_cart);
+
+        if($row_count>0){
+            $_SESSION['username'] = $user_username;
+            if( password_verify($user_password, $row_data['user_password']) ){
+
+                if($row_count==1 and $row_count_cart==0){
+                    $_SESSION['username'] = $user_username;
+                    echo "<script> alert('Sesión iniciada') </script>";
+                    echo "<script> window.open('profile.php','_self') </script>";
+                }else{
+                    $_SESSION['username'] = $user_username;
+                    echo "<script> alert('Sesión iniciada') </script>";
+                    echo "<script> window.open('payment.php','_self') </script>";
+                }
+
             }else{
-                $_SESSION['username'] = $user_username;
-                echo "<script> alert('Sesión iniciada') </script>";
-                echo "<script> window.open('payment.php','_self') </script>";
+                echo "<script> alert('Contraseña incorrecta') </script>";
+                terminarSesion();
             }
 
         }else{
             echo "<script> alert('Credenciales inválidas') </script>";
+            terminarSesion();
         }
-
-    }else{
-        echo "<script> alert('Credenciales inválidas') </script>";
+        
     }
-}
 ?>
