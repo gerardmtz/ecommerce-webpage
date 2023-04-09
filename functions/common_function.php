@@ -461,5 +461,13 @@ function display_cart_items(){
 }
 */
 
+
+// función para terminar la sesión del usuario
+function terminarSesion(){
+    // session_start();
+    session_unset();
+    session_destroy();
+}
+
 ?>
 
