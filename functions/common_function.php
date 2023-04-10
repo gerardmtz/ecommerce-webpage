@@ -1,8 +1,6 @@
 <?php
 //  04/04/2023 Video 55
 
-
-
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -466,25 +464,25 @@ function display_cart_items(){
 
 
 // Trabajo del video 55
-// tener los detalles de orden de los usuarios
+// obtener los detalles de orden de los usuarios
 
 function get_user_order_details(){
     global $con;
-    $username = $_SESSION [ 'username' ];
-    $get_details = "Select * from 'user_table' where username = '$username'";
+    $username = $_SESSION['username'];
+    $get_details = "SELECT * FROM `user_table` WHERE username = '$username';";
     $result_query = mysqli_query( $con, $get_details);
 
     while ( $row_query = mysqli_fetch_array( $result_query )){
-        $username_id = $row_query [ 'user_id' ];
+        $user_id = $row_query [ 'user_id' ];
         if( !isset( $_GET [ 'edit_account' ] ) ){
             if( !isset( $_GET[ 'my_orders' ] ) ){
                 if( !isset( $_GET [ 'delete_account'] ) ){
                     $user_id = $row_query[ 'user_id'];
-                    $get_orders = "Select * from 'user_orders' where user_id = $user_id 
-                    and order_status = 'pending'";
+                    $get_orders = "SELECT * FROM `user_orders` WHERE user_id = $user_id 
+                    AND order_status = 'pending' ;";
 
-                    $result_orders_quary = mysqli_query( $con, $get_orders );
-                    $row_count = mysqli_num_rows( $result_orders_quary );
+                    $result_orders_query = mysqli_query( $con, $get_orders );
+                    $row_count = mysqli_num_rows( $result_orders_query );
                     
                     if( $row_count > 0 ){
                         echo " <h3 class = 'text_center text_success mt-5 mb-2'> Tienes <span
@@ -499,6 +497,7 @@ function get_user_order_details(){
             }
         }
     }
+}
 
 
 // función para terminar la sesión del usuario
@@ -506,8 +505,5 @@ function terminarSesion(){
     // session_start();
     session_unset();
     session_destroy();
-
 }
-
 ?>
-
