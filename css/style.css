@@ -38,10 +38,14 @@
     object-fit: contain;
 }
 
-
-
 .card_img{
     width: 80px;
     height: 80px;
     object-fit: contain;
+}
+
+img{
+    width: 90%;
+    margin: auto;
+    display: block;
 }
