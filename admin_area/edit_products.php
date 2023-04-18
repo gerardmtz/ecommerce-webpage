@@ -1,4 +1,5 @@
 <!-- 13/04/2023 Video 65 y 66-->
+<!-- 18/04/2023 Video 67-->
 
 <?php
 if (isset($_GET['edit_products'])) {
@@ -117,7 +118,58 @@ if (isset($_GET['edit_products'])) {
         </div>
 
         <div class="w-50 m-auto">
-            <input type="submit" name="edit_product" name="edit_product" value="Update product" class="btn btn-info px-3 mb-3">
+            <input type="submit" name="edit_product"  value="Update product" class="btn btn-info px-3 mb-3">
         </div>
     </form>
 </div>
+
+<!-- Editor de productos -->
+
+<?php
+
+if(isset($_POST('edit_products'))){
+
+    $product_title=$_POST['product_title'];
+    $product_desc=$_POST['product_desc'];
+    $product_keywords=$_POST['product_keywords'];
+    $product_category=$_POST['product_category'];
+    $product_brands=$_POST['product_brands'];
+    $product_price=$_POST['product_price'];
+
+    $product_image1=$_FILES['product_image1']['name'];
+    $product_image2=$_FILES['product_image2']['name'];
+    $product_image3=$_FILES['product_image3']['name'];
+
+    $temp_image1=$_FILES['product_image1']['tmp_name'];
+    $temp_image2=$_FILES['product_image2']['tmp_name'];
+    $temp_image3=$_FILES['product_image3']['tmp_name'];
+
+    //checando los campos vacios o no
+
+    if($product_title=='' or $product_desc=='' or $product_keywords=''
+    or $product_category=='' or $product_brands=='' or $product_price==''
+    or $temp_image1=='' or $temp_image2=='' or $temp_image3==''){
+        echo "<script>alert('Por favor rellena todos campos y continuar con el proceso')</script>";
+    }else{
+        move_uploaded_file($temp_image1,"./product_images/$product_images1");
+        move_uploaded_file($temp_image2,"./product_images/$product_images2");
+        move_uploaded_file($temp_image3,"./product_images/$product_images3");
+
+        //query para actualizar productos
+
+        $update_product="update 'products' set product_title='$product_title',
+        product_description='$product_desc',producto_keywords='$product_keywords',
+        categoria_id='$product_category', brand_id='$product_brand',
+        product_image1='$product_image1', product_image2='$product_image2',
+        product_image3='$product_image3', product_price='$product_price', date=NOW() where
+        product_id=$edit_id";
+        $result_update=mysqli_query($con,$update_product);
+        if($result_update){
+            echo "<script>alert('El producto se ha actualizado correctamente')</script>";
+            echo "<script>window.open('./insert_product.php','_self')</script>";
+        }
+    }
+
+}
+
+?>
