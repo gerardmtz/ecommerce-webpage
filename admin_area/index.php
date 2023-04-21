@@ -1,3 +1,12 @@
+<!-- 12/04/23 Video 63 -->
+
+
+<!--  connect file -->
+<?php 
+include('../includes/connect.php');
+include('../functions/common_function.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +64,7 @@
                 <div class="button text-center">
 
                 <button class="my-3"> <a href="insert_product.php" class="nav-link text-light bg-danger my-1"> Insertar Productos </a> </button>
-                <button> <a href="" class="nav-link text-light bg-danger my-1"> Ver Productos </a> </button>
+                <button> <a href="index.php?view_products" class="nav-link text-light bg-danger my-1"> Ver Productos </a> </button>
                 <button> <a href="index.php?insert_category" class="nav-link text-light bg-danger my-1"> Insertar Cateogrías </a> </button>
                 <button> <a href="" class="nav-link text-light bg-danger my-1"> Ver Categorías </a> </button>
                 <button> <a href="index.php?insert_brand" class="nav-link text-light bg-danger my-1"> Insertar Marcas </a> </button>
@@ -80,15 +89,29 @@
                 if( isset($_GET['insert_brand']) ){
                     include('insert_brands.php');
                 }
+                if( isset($_GET['view_products']) ){
+                    include('view_products.php');
+                }
+                if( isset($_GET['edit_productss']) ){
+                    include('edit_products.php');
+                }
             ?>
 
         </div>
 
         <!--Last Nav Bar Child -->
         <!-- footer -->
+        <!-- 
+        
+                Video 64 - Se comento esta parte.
+        
         <div class="bg-danger p-3 text-center footer">
             <p>Todos los Derechos Reservados © Taylor-2023 </p>
-        </div>
+        </div> -->
+
+        <!-- Video 63 minuto 4:05 se agrega esta linea de código-->
+        <?php include("../includes/footer.php") ?>
+
     </div>
 
     <!--bootstrap JS links-->
