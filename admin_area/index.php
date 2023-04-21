@@ -2,13 +2,14 @@
 
 
 <!--  connect file -->
-<?php 
+<?php
 include('../includes/connect.php');
 include('../functions/common_function.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +27,7 @@ include('../functions/common_function.php');
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
+
 <body>
 
     <!--navbar-->
@@ -38,12 +40,12 @@ include('../functions/common_function.php');
 
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav">
-                        <li class = "nav-item">
+                        <li class="nav-item">
                             <a href="" class="nav-link">Bienvenido: Invitado</a>
                         </li>
                     </ul>
 
-            
+
                 </nav>
 
             </div>
@@ -63,17 +65,17 @@ include('../functions/common_function.php');
                 </div>
                 <div class="button text-center">
 
-                <button class="my-3"> <a href="insert_product.php" class="nav-link text-light bg-danger my-1"> Insertar Productos </a> </button>
-                <button> <a href="index.php?view_products" class="nav-link text-light bg-danger my-1"> Ver Productos </a> </button>
-                <button> <a href="index.php?insert_category" class="nav-link text-light bg-danger my-1"> Insertar Cateogrías </a> </button>
-                <button> <a href="" class="nav-link text-light bg-danger my-1"> Ver Categorías </a> </button>
-                <button> <a href="index.php?insert_brand" class="nav-link text-light bg-danger my-1"> Insertar Marcas </a> </button>
-                <button> <a href="" class="nav-link text-light bg-danger my-1"> Ver Marcas </a> </button>
-                <button> <a href="" class="nav-link text-light bg-danger my-1"> Todas las órdenes </a> </button>
-                <button> <a href="" class="nav-link text-light bg-danger my-1"> Todos los pagos </a> </button>
-                <button> <a href="" class="nav-link text-light bg-danger my-1"> lista de usuarios </a> </button>
-                <button> <a href="" class="nav-link text-light bg-danger my-1">  Salir </a> </button>
-                
+                    <button class="my-3"> <a href="insert_product.php" class="nav-link text-light bg-danger my-1"> Insertar Productos </a> </button>
+                    <button> <a href="index.php?view_products" class="nav-link text-light bg-danger my-1"> Ver Productos </a> </button>
+                    <button> <a href="index.php?insert_category" class="nav-link text-light bg-danger my-1"> Insertar Cateogrías </a> </button>
+                    <button> <a href="index.php?view_categories" class="nav-link text-light bg-danger my-1"> Ver Categorías </a> </button>
+                    <button> <a href="index.php?insert_brand" class="nav-link text-light bg-danger my-1"> Insertar Marcas </a> </button>
+                    <button> <a href="index.php?view_brands" class="nav-link text-light bg-danger my-1"> Ver Marcas </a> </button>
+                    <button> <a href="index.php?list_orders" class="nav-link text-light bg-danger my-1"> Todas las órdenes </a> </button>
+                    <button> <a href="" class="nav-link text-light bg-danger my-1"> Todos los pagos </a> </button>
+                    <button> <a href="" class="nav-link text-light bg-danger my-1"> lista de usuarios </a> </button>
+                    <button> <a href="" class="nav-link text-light bg-danger my-1"> Salir </a> </button>
+
                 </div>
             </div>
         </div>
@@ -82,19 +84,43 @@ include('../functions/common_function.php');
         <div class="container my-3">
 
             <?php
-                if( isset($_GET['insert_category']) ){
-                    include('insert_categories.php');
-                }
+            if (isset($_GET['insert_category'])) {
+                include('insert_categories.php');
+            }
 
-                if( isset($_GET['insert_brand']) ){
-                    include('insert_brands.php');
-                }
-                if( isset($_GET['view_products']) ){
-                    include('view_products.php');
-                }
-                if( isset($_GET['edit_productss']) ){
-                    include('edit_products.php');
-                }
+            if (isset($_GET['insert_brand'])) {
+                include('insert_brands.php');
+            }
+            if (isset($_GET['view_products'])) {
+                include('view_products.php');
+            }
+            if (isset($_GET['edit_products'])) {
+                include('edit_products.php');
+            }
+            if (isset($_GET['delete_products'])) {
+                include('delete_products.php');
+            }
+            if (isset($_GET['view_categories'])) {
+                include('view_categories.php');
+            }
+            if (isset($_GET['view_brands'])) {
+                include('view_brands.php');
+            }
+            if (isset($_GET['edit_category'])) {
+                include('edit_category.php');
+            }
+            if (isset($_GET['edit_brands'])) {
+                include('edit_brands.php');
+            }
+            if (isset($_GET['delete_category'])) {
+                include('delete_category.php');
+            }
+            if (isset($_GET['delete_brands'])) {
+                include('delete_brands.php');
+            }
+            if (isset($_GET['list_orders'])) {
+                include('list_orders.php');
+            }
             ?>
 
         </div>
@@ -115,6 +141,11 @@ include('../functions/common_function.php');
     </div>
 
     <!--bootstrap JS links-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>    
+   
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+
 </html>
