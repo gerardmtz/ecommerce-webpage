@@ -13,7 +13,7 @@
 <body>
     <?php
     $username = $_SESSION['username'];
-    $get_user = "Select * from 'user_table' where username='$username'";
+    $get_user = "SELECT * FROM `user_table` WHERE username='$username'";
     $result = mysqli_query($con, $get_user);
     $row_fetch = mysqli_fetch_assoc($result);
     $user_id = $row_fetch['user_id'];
@@ -25,7 +25,7 @@
 
     <table class="table table-bordered mt-5">
 
-        <thead class="bg-info">
+        <thead class="bg-danger">
             <tr>
                 <th>S1 no</th>
                 <th>Amount Due</th>
@@ -38,11 +38,9 @@
         </thead>
 
         <tbody class="bg-secondary text-light">
-
-
             <?php
-            $get_order_details = "Select * from 'user_orders' where user_id=$user_id";
-            $result_order = mysqli_query($con, $get_order_details);
+            $get_order_details = "SELECT * FROM `user_orders` WHERE user_id=$user_id ;";
+            $result_orders = mysqli_query($con, $get_order_details);
             $number = 1;
 
             while ($row_orders = mysqli_fetch_assoc($result_orders)) {
@@ -58,7 +56,7 @@
                 } else {
                     $order_status = 'Complete';
                 }
-                $order_status = $row_orders['order_date'];
+                $order_date = $row_orders['order_date'];
 
 
                 echo "<tr>
