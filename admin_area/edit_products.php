@@ -127,7 +127,7 @@ if (isset($_GET['edit_products'])) {
 
 <?php
 
-if(isset($_POST('edit_products'))){
+if(isset($_POST['edit_products'])){
 
     $product_title=$_POST['product_title'];
     $product_desc=$_POST['product_desc'];
