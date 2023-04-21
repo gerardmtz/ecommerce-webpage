@@ -1,6 +1,7 @@
 <!-- conneting files -->
 <?php
-    include('includes/connect.php');
+    include('../includes/connect.php');
+    @session_start();
 ?>
 
 <!DOCTYPE html>
@@ -24,20 +25,20 @@
         <!--first child-->
         <nav class="navbar navbar-expand-lg bg-danger">
         <div class="container-fluid">
-            <img src="./img/logo.png" alt="" class = "logo">
+            <img src="../img/logo.png" alt="" class = "logo">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Página Principal</a>
+                <a class="nav-link active" aria-current="page" href="../index.php">Página Principal</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="display_all.php">Productos</a> 
+                <a class="nav-link" href="../display_all.php">Productos</a> 
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Registro</a>
+                <a class="nav-link" href="./user_registration.php">Registro</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="#">Contacto</a>
@@ -58,12 +59,26 @@
         <!--second child -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Bienvenido: Invitado</a>
-                </li>
-                <li class = "nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
+            <?php
+                if( !isset($_SESSION['username']) ){
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='#'>Bienvenido: Invitado</a> </li>
+                    ";
+                }else{
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='#'>Bienvenido ".$_SESSION['username']." </a> </li>
+                    ";
+                }
+                if( !isset($_SESSION['username']) ){
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='./users_area/user_login.php'>Iniciar sesión</a> </li>
+                    ";
+                }else{
+                    echo "
+                        <li class = 'nav-item'> <a class='nav-link' href='./users_area/logout.php'>Cerrar sesión</a> </li>
+                    ";
+                }
+                ?>
             </ul>
         </nav>
 
@@ -83,9 +98,9 @@
                     <?php
 
                         if( !isset( $_SESSION['username'] ) ){
-                            include('users_area/user_login.php');
+                            include('./user_login.php');
                         }else{
-                            include('payment.php');
+                            include('./payment.php');
                         }
                     
                     ?>
@@ -100,7 +115,7 @@
         <!-- footer -->    
 
         <!-- including footer file -->
-        <?php include("./includes/footer.php") ?>
+        <?php include("../includes/footer.php") ?>
           
     </div>
     <!--bootstrap JS links-->

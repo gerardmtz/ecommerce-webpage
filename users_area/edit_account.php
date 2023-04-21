@@ -1,13 +1,9 @@
 <!-- 05/04/2023 Video 56, 57 y 58 -->
-
-
-
 <?php
-
-if (isset($_GET['edit_accout'])) {
+if ( isset($_GET['edit_accout']) ) {
 
     $user_session_name = $_SESSION['username'];
-    $select_query = "Select * from 'user_table' where username = '$user_session_name'";
+    $select_query = "SELECT * FROM `user_table` WHERE username = '$user_session_name' ;";
     $result_query = mysqli_query($con, $select_query);
     $row_fetch = mysqli_fetch_assoc($result_query);
 
@@ -18,7 +14,9 @@ if (isset($_GET['edit_accout'])) {
     $user_mobile = $row_fetch['user_mobile'];
 }
 
-if ( isset( $_POST['user_update'] ) ) {
+
+
+if ( isset($_POST['user_update']) ) {
 
     $update_id = $user_id;
     $username = $_POST['username'];
@@ -31,56 +29,45 @@ if ( isset( $_POST['user_update'] ) ) {
 
     //Actualización del query
 
-    $update_date = "update 'user_table' set username='$username', user_email=$user_email',
-        user_image='$user_image1',user_address='$user_address',user_mobile='$user_mobile' where
-        user_id=$update_id";
+    $update_date = "UPDATE `user_table` SET username = '$username', user_email = $user_email',
+        user_image ='$user_image1',user_address='$user_address',user_mobile='$user_mobile' WHERE
+        user_id = $update_id ;";
 
     $result_query_update = mysqli_query( $con, $update_date );
 
     if ( $result_query_update ) {
-        echo "<script>alert('Actualizacion de data Exitosa')</script>";
+        echo "<script>alert('Se actualizaron los datos con éxito')</script>";
         echo "<script>window.open('logout.php', '_self')</script>";
     }
 }
 
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cuenta</title>
-
 </head>
-
 <body>
-
-    <h3 class="text-success mb-4">Editar Cuenta</h3>
+    
+    <h3 class="text-success mb-4">Editar Cuenta </h3>
 
     <form action="" method="post" enctype="multipart/form-data">
 
         <div class="form-outline mb-4">
-            <input type="text" class="form-control w-50 m-auto" value="<?php echo $username ?>" name="user_username">
+            <input type="text" class="form-control w-50 m-auto" value=" <?php echo $username ?>" name="user_username">
         </div>
 
         <div class="form-outline mb-4">
-            <input type="email" class="form-control w-50 m-auto" value="<?php echo $user_email ?>" name="user_email">
+            <input type="email" class="form-control w-50 m-auto" value=" <?php echo $user_email ?>" name="user_email">
         </div>
 
         <div class="form-outline mb-4 d-flex w-50 m-auto">
-
             <input type="file" class="form-control m-auto" name="user_image">
-
-            <!-- 05/04/2023 Se agrego una carpeta llamada user_images -->
-            <img src="./user_images/<?php echo $user_image ?>" alt="" class="edit_image">
-
+            <img src="./users_images/<?php echo $user_image?>" alt="" class="edit_image">
         </div>
 
         <div class="form-outline mb-4">
@@ -91,7 +78,7 @@ if ( isset( $_POST['user_update'] ) ) {
             <input type="text" class="form-control w-50 m-auto" value="<?php echo $user_mobile ?>" name="user_mobile">
         </div>
 
-        <input type="submit" value="Update" class="bg-info py-2 px-3 border-0" name="user_update">
+        <input type="submit" value="Update" class="bg-danger py-2 px-3 border-0" name="user_update">
 
     </form>
 
