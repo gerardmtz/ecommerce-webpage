@@ -15,6 +15,9 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="assets/css/styles.css" rel="stylesheet" />
     <link href="assets/css/estilos.css" rel="stylesheet" />
+    <link href="assets/css/estilos-carrusel.css" rel="stylesheet" />
+
+
 </head>
 
 <body>
@@ -94,6 +97,44 @@
             </div>
         </div>
     </section>
+
+
+    
+        
+    <h2 class="artistas-centro">Nuestros artistas</h2>
+    <!-- Carrusel -->
+    <div class="carrusel">
+        <div class="carrusel-items">
+            <div class="carrusel-item">
+                <img src="assets/img/artista1.jpg" alt="" />
+            </div>
+            <div class="carrusel-item">
+                <img src="assets/img/artista2.jpg" alt="" />
+            </div>
+            <div class="carrusel-item">
+                <img src="assets/img/artista3.jpg" alt="" />
+            </div>
+            <div class="carrusel-item">
+                <img src="assets/img/artista4.jpg" alt="" />
+            </div>
+            <div class="carrusel-item">
+                <img src="assets/img/artista5.jpg" alt="" />
+            </div>
+            <div class="carrusel-item">
+                <img src="assets/img/artista6.jpg" alt="" />
+            </div>
+            <div class="carrusel-item">
+                <img src="assets/img/artista11.jpg" alt="" />
+            </div>
+            <div class="carrusel-item">
+                <img src="assets/img/artista7.jpg" alt="" />
+            </div>
+
+        </div>
+    </div>
+    <script src="assets/js/funcion-carrusel.js"></script>
+
+
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
@@ -105,6 +146,8 @@
     <!-- Core theme JS-->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/scripts.js"></script>
+
+
 </body>
 
 </html>
