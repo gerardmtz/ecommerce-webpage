@@ -16,11 +16,12 @@
     <link href="assets/css/styles.css" rel="stylesheet" />
     <link href="assets/css/estilos.css" rel="stylesheet" />
     <link href="assets/css/estilos-carrusel.css" rel="stylesheet" />
-
-
+    <link href="assets/css/estilos-loader.css" rel="stylesheet" />
+   
 </head>
 
 <body>
+
     <a href="#" class="btn-flotante" id="btnCarrito">Carrito <span class="badge bg-success" id="carrito">0</span></a>
     <!-- Navigation-->
     <div class="container">
@@ -99,8 +100,6 @@
     </section>
 
 
-    
-        
     <h2 class="artistas-centro">Nuestros artistas</h2>
     <!-- Carrusel -->
     <div class="carrusel">
@@ -134,6 +133,7 @@
     </div>
     <script src="assets/js/funcion-carrusel.js"></script>
 
+   
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
@@ -147,6 +147,17 @@
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <script src="assets/js/scripts.js"></script>
 
+    <!-- Animación de carga -->
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+    <!-- Script de control de la anumación de carga -->
+    <script>
+        $(window).on("load",function(){
+            $(".loader-wrapper").fadeOut("slow");
+        });
+    </script>
 
 </body>
 

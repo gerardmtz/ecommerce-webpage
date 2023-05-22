@@ -116,7 +116,6 @@ if (!empty($_SESSION['active'])) {
         function valida(){
 
             /* Validación de que no estén vacios los campos */
-
             if( document.formulario.usuario.value.length == 0 ||
                 document.formulario.clave.value.length == 0 ){
 
@@ -126,7 +125,6 @@ if (!empty($_SESSION['active'])) {
 
 
             // Validación del usuario
-
             var RegExUsuario = /^[a-zA-Z]+$/;
 
             if( !( RegExUsuario.test( document.formulario.usuario.value ) ) ){
@@ -134,9 +132,8 @@ if (!empty($_SESSION['active'])) {
                 return false;
             }
 
-        
-            // Validación de la contraseña
 
+            // Validación de la contraseña
             var RegExClave = /(+{1})$/;
 
             if( !( RegExClave.test( document.formulario.clave.value ) ) ){
@@ -144,19 +141,10 @@ if (!empty($_SESSION['active'])) {
                 return false;
             }
 
-            
-
             // No se detectó ningún fallo
-            return true;
-
-
-
-
-            
+            return true;  
         }
-
     </script>
-
 
 </body>
 
