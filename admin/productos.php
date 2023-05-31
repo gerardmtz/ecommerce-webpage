@@ -78,7 +78,7 @@ include("includes/header.php"); ?>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+                <form action="" method="POST" enctype="multipart/form-data" autocomplete="off" onsubmit="return valida()" name="formulario">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -136,3 +136,56 @@ include("includes/header.php"); ?>
     </div>
 </div>
 <?php include("includes/footer.php"); ?>
+
+<script>
+    function valida(){
+
+        if(
+            document.formulario.nombre.value.length == 0      ||
+            document.formulario.cantidad.value.length == 0    ||
+            document.formulario.descripcion.value.length == 0 ||
+            document.formulario.p_normal.value.length == 0    ||
+            document.formulario.p_rebajado.value.length == 0  ||
+            document.formulario.categoria.value.length == 0 
+        ){
+            alert('Se deben de llenar todos los campos');
+            return false;
+        }
+
+        // validación de cadenas
+
+        var RegExString = /^[a-zA-Z]+$/;
+        var RegExStringLength = /^.{1,255}$/;
+        var RegExDigit = /^[0-9]+$/;
+
+        if( !( RegExString.test( document.formulario.nombre.value ) ) ){
+            alert('El campo nombre sólo puede contener caracteres alfebéticos.');
+            return false;
+        }
+
+        if( !( RegExDigit.test( document.formulario.cantidad.value ) ) ){
+            alert('El campo de cantidad sólo puede contener caracteres numéricos.');
+            return false;
+        }
+
+        if( !( RegExStringLength.test( document.formulario.descripcion.value ) ) ){
+            alert('El campo de descripción sólo admite 255 caracteres alfabéticos.');
+            return false;
+        }
+
+
+        if( !( RegExDigit.test( document.formulario.p_normal.value ) ) ){
+            alert('El campo de precio normal sólo puede contener caracteres numéricos.');
+            return false;
+        }
+
+
+        if( !( RegExDigit.test( document.formulario.p_rebajado.value ) ) ){
+            alert('El campo de precio rebajado sólo puede contener caracteres numéricos.');
+            return false;
+        }
+
+        // No se detectó ningún fallo
+        return true;  
+    }
+</script>
