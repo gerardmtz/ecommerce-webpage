@@ -73,7 +73,7 @@ if (!empty($_SESSION['active'])) {
                                         <h1 class="h4 text-gray-900 mb-4">¡Bienvenido de Nuevo!</h1>
                                         <?php echo (isset($alert)) ? $alert : ''; ?>
                                     </div>
-                                    <form class="user" method="POST" action="" autocomplete="off" onsubmit="return valida()" name="formulario">
+                                    <form class="user" method="POST" action="" autocomplete="off" name="formulario">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="usuario" name="usuario" placeholder="Usuario...">
                                         </div>
@@ -106,45 +106,6 @@ if (!empty($_SESSION['active'])) {
 
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
-
-
-
-    <!-- Script de validación para las expresiones reguales -->
-
-    <script>
-
-        function valida(){
-
-            /* Validación de que no estén vacios los campos */
-            if( document.formulario.usuario.value.length == 0 ||
-                document.formulario.clave.value.length == 0 ){
-
-                alert('Se deben de llenar todos los campos');
-                return false;
-            }
-
-
-            // Validación del usuario
-            var RegExUsuario = /^[a-zA-Z]+$/;
-
-            if( !( RegExUsuario.test( document.formulario.usuario.value ) ) ){
-                alert('El campo de usuario sólo puede contener caracteres alfebéticos.');
-                return false;
-            }
-
-
-            // Validación de la contraseña
-            var RegExClave = /(+{1})$/;
-
-            if( !( RegExClave.test( document.formulario.clave.value ) ) ){
-                alert('El campo de la contraseña debe de contener mínimo un caracter');
-                return false;
-            }
-
-            // No se detectó ningún fallo
-            return true;  
-        }
-    </script>
 
 </body>
 
