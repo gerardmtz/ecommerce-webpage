@@ -24,6 +24,7 @@
 
     <a href="#" class="btn-flotante" id="btnCarrito">Carrito <span class="badge bg-success" id="carrito">0</span></a>
     <!-- Navigation-->
+    
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
@@ -126,7 +127,7 @@
                 <img src="assets/img/artista11.jpg" alt="" />
             </div>
             <div class="carrusel-item">
-                <img src="assets/img/artista7.jpg" alt="" />
+               
             </div>
 
         </div>
