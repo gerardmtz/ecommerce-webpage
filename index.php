@@ -17,6 +17,8 @@
     <link href="assets/css/estilos.css" rel="stylesheet" />
     <link href="assets/css/estilos-carrusel.css" rel="stylesheet" />
     <link href="assets/css/estilos-loader.css" rel="stylesheet" />
+    <link href="assets/css/toggle.css" rel="stylesheet" />
+    
    
 </head>
 
@@ -24,7 +26,6 @@
 
     <a href="#" class="btn-flotante" id="btnCarrito">Carrito <span class="badge bg-success" id="carrito">0</span></a>
     <!-- Navigation-->
-    
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
@@ -40,7 +41,25 @@
                         while ($data = mysqli_fetch_assoc($query)) { ?>
                             <a href="#" class="nav-link" category="<?php echo $data['categoria']; ?>"><?php echo $data['categoria']; ?></a>
                         <?php } ?>
+                        <!-- Nuevo -->
+
+                        <div id="toggle">
+                            <i class="indicator"></i>
+                        </div>
+                        <script>
+                            const h2 = document.querySelector('h2');
+                            const body = document.querySelector('body');
+                            const toggle = document.getElementById('toggle')
+                            toggle.onclick = function() {
+                                toggle.classList.toggle('active');
+                                body.classList.toggle('active');
+                                h2.classList.toggle('active');
+                            }
+                        </script>
                     </ul>
+
+
+
                 </div>
             </div>
         </nav>
@@ -101,6 +120,9 @@
     </section>
 
 
+
+    <br><br><br><br><br><br>
+
     <h2 class="artistas-centro">Nuestros artistas</h2>
     <!-- Carrusel -->
     <div class="carrusel">
@@ -127,7 +149,7 @@
                 <img src="assets/img/artista11.jpg" alt="" />
             </div>
             <div class="carrusel-item">
-               
+                <img src="assets/img/artista7.jpg" alt="" />
             </div>
 
         </div>

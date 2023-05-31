@@ -6,7 +6,7 @@
 
     $host = "localhost";
     $user = "root";
-    $clave = "phpMyAdmin23";
+    $clave = "";
     $bd = "tienda";
 
     $conexion = mysqli_connect($host,$user,$clave,$bd);

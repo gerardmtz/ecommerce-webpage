@@ -20,6 +20,7 @@ require_once "config/config.php";
 </head>
 
 <body>
+
     <!-- Navigation-->
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -147,7 +148,13 @@ require_once "config/config.php";
                 }
             }
         }
+
+
+        
     </script>
+
+
+
 </body>
 
 </html>
